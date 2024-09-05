@@ -4,9 +4,8 @@ import * as Yup from "yup";
 import { ErrorMessage } from "formik";
 
 import { useDispatch } from "react-redux";
-import { nanoid } from "nanoid";
 
-import { addContact } from "../../redux/contactsSlice";
+import { addContact } from "../../redux/contactsOps";
 
 const initValues = {
   profileName: "",
@@ -33,7 +32,6 @@ const ContactForm = () => {
     const profileObj = {
       name: values.profileName,
       number: values.profileNumber,
-      id: nanoid(),
     };
 
     const action = addContact(profileObj);

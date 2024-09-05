@@ -30,11 +30,12 @@ export const deleteContact = createAsyncThunk(
 );
 
 export const addContact = createAsyncThunk(
-  "contacts/deleteContact",
-  async (contactId, thunkApi) => {
+  "contacts/addContact",
+  async (contact, thunkApi) => {
     try {
-      const { data } = await axios.delete(
-        `https://66d82e6637b1cadd8053b3e9.mockapi.io/contacts/${contactId}`
+      const { data } = await axios.post(
+        `https://66d82e6637b1cadd8053b3e9.mockapi.io/contacts`,
+        contact
       );
       return data;
     } catch (error) {

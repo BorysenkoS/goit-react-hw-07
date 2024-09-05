@@ -1,13 +1,19 @@
 import css from "./SearchBox.module.css";
 
+import Loader from "../Loader/Loader";
+
 import { useDispatch, useSelector } from "react-redux";
 
 import { setFilterValue } from "../../redux/filtersSlice";
+import { selectFilter } from "../../redux/filtersSlice";
+import { selectLoading } from "../../redux/contactsSlice";
 
 const SearchBox = () => {
   const dispatch = useDispatch();
 
-  const filterValue = useSelector((state) => state.filter.filters);
+  const isLoading = useSelector(selectLoading);
+
+  const filterValue = useSelector(selectFilter);
 
   const handleFilter = (event) => {
     const value = event.target.value;
@@ -27,6 +33,7 @@ const SearchBox = () => {
           value={filterValue}
         />
       </label>
+      {isLoading && <Loader />}
     </div>
   );
 };
